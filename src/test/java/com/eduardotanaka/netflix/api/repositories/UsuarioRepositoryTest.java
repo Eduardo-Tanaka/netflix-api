@@ -1,6 +1,7 @@
 package com.eduardotanaka.netflix.api.repositories;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.Calendar;
 
@@ -22,7 +23,8 @@ import com.eduardotanaka.netflix.api.utils.PasswordUtils;
 @ActiveProfiles("test")
 public class UsuarioRepositoryTest {
 
-	@Autowired UsuarioRepository usurioRepository;
+	@Autowired 
+	private UsuarioRepository usuarioRepository;
 	private final String EMAIL = "email@teste.com";
 	
 	// roda antes do test
@@ -36,19 +38,19 @@ public class UsuarioRepositoryTest {
 		usuario.setDataCriacao(Calendar.getInstance());
 		usuario.setPerfil(PerfilEnum.ROLE_ADMIN);
 		
-		this.usurioRepository.save(usuario);
+		this.usuarioRepository.save(usuario);
 	}
 	
 	// roda depois do test
 	@After
 	public void tearDown() {
-		this.usurioRepository.deleteAll();
+		//this.usurioRepository.deleteAll();
 	}
 	
 	// testa se o email retorna algum usuário e o email são iguais
 	@Test
 	public void testBuscarPorEmail() {
-		Usuario usuario = this.usurioRepository.findByEmail(EMAIL);
+		Usuario usuario = this.usuarioRepository.findByEmail(EMAIL);
 		
 		assertEquals(usuario.getEmail(), EMAIL);
 	}
