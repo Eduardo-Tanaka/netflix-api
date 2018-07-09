@@ -95,5 +95,8 @@ public class Usuario implements Serializable {
 		this.dataAtualizacao = dataAtualizacao;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Usuario [email=" + email + ", senha=" + senha + ", perfil=" + perfil + "]";
+	}
 }
